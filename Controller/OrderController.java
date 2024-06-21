@@ -20,19 +20,11 @@ public class OrderController {
         return orderService.orderFood(orderId, customerId, resturantId, foodItemId);
     }
 
-    public Order checkOrderStatusFromCustomerByOrderId(String userId) {
-       return orderService.checkOrderStatusFromCustomerByOrderId(userId);
+    public List<Order> getOrderListOfCustomerByUserName(String userName) {
+        return orderService.getOrderListOfCustomerByUserName(userName);
     }
 
-    public String checkOrderStatusForRestaurant(String restaurantId) {
-        return orderService.checkOrderStatusForRestaurant(restaurantId);
-    }
-
-    public List<Order> getOrderListOfCustomer(String userName) {
-        return orderService.getOrderListOfCustomer(userName);
-    }
-
-    public List<Order> getOrderListOfRestaurant(String restaurantId) {
-        return orderService.getOrderListOfRestaurant(restaurantId);
+    public List<Order> getOrderListOfRestaurantByRestaurantId(String restaurantId) {
+        return orderService.getOrderListOfRestaurantByRestaurantId(restaurantId);
     }
 }

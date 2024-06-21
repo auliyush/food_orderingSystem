@@ -1,5 +1,6 @@
 package Service.ServiceImpl;
 
+import Controller.RestaurantController;
 import Model.FoodItem;
 import Service.FoodItemService;
 
@@ -16,22 +17,22 @@ public class FoodItemServiceImpl implements FoodItemService {
     }
 
     @Override
-    public boolean addFoodItem(String foodItemId, String resturantId, String foodName, String foodDescription,
-                               int foodPrice, boolean foodAvailabilty) {
-        FoodItem newFood = new FoodItem(foodItemId, resturantId, foodName, foodDescription, foodPrice,
-                foodAvailabilty);
-        return ResturantServiceImpl.getInstance().getResturantByResturantId(resturantId).getFoodItemsList().add(newFood);
+    public boolean addFoodItem(String foodItemId, String restaurantId, String foodName, String foodDescription,
+                               int foodPrice, boolean foodAvailability) {
+        FoodItem newFood = new FoodItem(foodItemId, restaurantId, foodName, foodDescription, foodPrice,
+                foodAvailability);
+        return RestaurantController.getInstance().getRestaurantByRestaurantId(restaurantId).getFoodItemsList().add(newFood);
     }
 
     @Override
-    public List<FoodItem> getFoodItemListByResturantId(String resturantId) {
-        return ResturantServiceImpl.getInstance().getResturantByResturantId(resturantId).getFoodItemsList();
+    public List<FoodItem> getFoodItemListByRestaurantId(String restaurantId) {
+        return RestaurantController.getInstance().getRestaurantByRestaurantId(restaurantId).getFoodItemsList();
     }
 
     @Override
-    public boolean updateFoodItem(String foodItemId, String resturantId, String foodName, String foodDescription,
+    public boolean updateFoodItem(String foodItemId, String restaurantId, String foodName, String foodDescription,
                                   int foodPrice, boolean foodAvailability) {
-        for(FoodItem foodItem : ResturantServiceImpl.getInstance().getResturantByResturantId(resturantId).
+        for(FoodItem foodItem : RestaurantController.getInstance().getRestaurantByRestaurantId(restaurantId).
                 getFoodItemsList()){
             if(foodItem.getId().equals(foodItemId)){
                 foodItem.setFoodName(foodName);
@@ -45,8 +46,8 @@ public class FoodItemServiceImpl implements FoodItemService {
     }
 
     @Override
-    public boolean deleteFoodItem(String foodItemId, String resturantId) {
-        List<FoodItem> fetchFoodItemList = ResturantServiceImpl.getInstance().getResturantByResturantId(resturantId).
+    public boolean deleteFoodItem(String foodItemId, String restaurantId) {
+        List<FoodItem> fetchFoodItemList = RestaurantController.getInstance().getRestaurantByRestaurantId(restaurantId).
                 getFoodItemsList();
         for(FoodItem foodItem : fetchFoodItemList){
             if(foodItem.getId().equals(foodItemId)){
@@ -59,7 +60,7 @@ public class FoodItemServiceImpl implements FoodItemService {
 
     @Override
     public FoodItem getFoodItemById(String foodItemId, String restaurantId) {
-        for(FoodItem foodItem : ResturantServiceImpl.getInstance().getResturantByResturantId(restaurantId).
+        for(FoodItem foodItem : RestaurantController.getInstance().getRestaurantByRestaurantId(restaurantId).
                 getFoodItemsList()){
             if(foodItem.getId().equals(foodItemId)){
                 return foodItem;

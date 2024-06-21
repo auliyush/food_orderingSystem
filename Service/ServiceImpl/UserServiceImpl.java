@@ -23,6 +23,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserByUserId(String userId) {
+        return userRepository.getUserByUserId(userId);
+    }
+
+    @Override
+    public boolean checkEmailAlreadyExistsOrNot(String userEmail) {
+        return userRepository.checkEmailAlreadyExistsOrNot(userEmail);
+    }
+
+    @Override
     public boolean signUp(String toString, String username, String userPassword, String userEmail, String userRole) {
         User user = new User(toString, username, userPassword, userEmail, userRole);
         return userRepository.addUser(user);

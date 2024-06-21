@@ -10,4 +10,8 @@ public interface UserRepository {
     User getUserByUserName(String userName);
 
     boolean addUser(User user);
+
+    User getUserByUserId(String userId);
+
+    boolean checkEmailAlreadyExistsOrNot(String userEmail);
 }

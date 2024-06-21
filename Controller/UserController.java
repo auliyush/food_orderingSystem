@@ -16,7 +16,14 @@ public class UserController {
         return userService.getUserByUserName(userName);
     }
 
+    public User getUserByUserId(String customerId){
+        return userService.getUserByUserId(customerId);
+    }
     public boolean signUp(String userId, String username, String userPassword, String userEmail, String userRole) {
         return userService.signUp(userId, username, userPassword, userEmail, userRole);
+    }
+
+    public boolean checkEmailAlreadyExistsOrNot(String userEmail) {
+        return userService.checkEmailAlreadyExistsOrNot(userEmail);
     }
 }

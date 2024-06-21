@@ -22,17 +22,17 @@ public class FoodItemController {
                 foodAvailabilty);
     }
 
-    public List<FoodItem> getFoodItemListByResturantId(String resturantId) {
-        return foodItemService.getFoodItemListByResturantId(resturantId);
+    public List<FoodItem> getFoodItemListByRestaurantId(String restaurantId) {
+        return foodItemService.getFoodItemListByRestaurantId(restaurantId);
     }
 
-    public boolean updateFoodItem(String foodItemId, String resturantId, String foodName, String foodDescription, int foodPrice,
+    public boolean updateFoodItem(String foodItemId, String restaurantId, String foodName, String foodDescription, int foodPrice,
                                   boolean foodAvailability) {
-        return foodItemService.updateFoodItem(foodItemId, resturantId, foodName, foodDescription, foodPrice, foodAvailability);
+        return foodItemService.updateFoodItem(foodItemId, restaurantId, foodName, foodDescription, foodPrice, foodAvailability);
     }
 
-    public boolean deleteFoodItem(String foodItemId, String resturantId) {
-        return foodItemService.deleteFoodItem(foodItemId, resturantId);
+    public boolean deleteFoodItem(String foodItemId, String restaurantId) {
+        return foodItemService.deleteFoodItem(foodItemId, restaurantId);
     }
 
     public FoodItem getFoodItemById(String foodItemId, String restaurantId) {

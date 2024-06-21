@@ -58,7 +58,7 @@ public class FoodItem {
         this.foodPrice = foodPrice;
     }
 
-    public boolean isFoodAvailability() {
+    public boolean getFoodAvailability() {
         return foodAvailability;
     }
 

@@ -31,4 +31,24 @@ public class UserRepositoryImpl implements UserRepository {
         }
         return null;
     }
+
+    @Override
+    public User getUserByUserId(String userId) {
+        for(User user : usersList){
+            if(user.getId().equals(userId)){
+                return user;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean checkEmailAlreadyExistsOrNot(String userEmail) {
+        for(User user : usersList){
+            if(user.getUserEmail().equals(userEmail)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

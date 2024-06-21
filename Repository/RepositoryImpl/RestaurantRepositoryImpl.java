@@ -1,29 +1,29 @@
 package Repository.RepositoryImpl;
 
 import Model.Restaurant;
-import Repository.ResturantRepository;
+import Repository.RestaurantRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResturantRepositoryImpl implements ResturantRepository {
+public class RestaurantRepositoryImpl implements RestaurantRepository {
 
-    private static ResturantRepositoryImpl instance;
-    public static synchronized ResturantRepositoryImpl getInstance(){
+    private static RestaurantRepositoryImpl instance;
+    public static synchronized RestaurantRepositoryImpl getInstance(){
         if(instance == null){
-            instance = new ResturantRepositoryImpl();
+            instance = new RestaurantRepositoryImpl();
         }
         return instance;
     }
 
     private List<Restaurant> restaurantList = new ArrayList<>();
     @Override
-    public List<Restaurant> getListOfAllResturant() {
+    public List<Restaurant> getListOfAllRestaurant() {
         return restaurantList;
     }
 
     @Override
-    public boolean findResturantByResturantName(String resturantName) {
+    public boolean findRestaurantByRestaurantName(String resturantName) {
         for(Restaurant restaurant : restaurantList){
             if(restaurant.getResturantName().equals(resturantName)){
                 return true;
@@ -43,7 +43,7 @@ public class ResturantRepositoryImpl implements ResturantRepository {
     }
 
     @Override
-    public boolean addResturantInList(Restaurant newRestaurant) {
+    public boolean addRestaurant(Restaurant newRestaurant) {
        return restaurantList.add(newRestaurant);
     }
 
@@ -58,9 +58,9 @@ public class ResturantRepositoryImpl implements ResturantRepository {
     }
 
     @Override
-    public Restaurant findResturantByResturantId(String resturantId) {
+    public Restaurant findRestaurantByRestaurantId(String restaurantId) {
         for(Restaurant restaurant : restaurantList){
-            if(restaurant.getId().equals(resturantId)){
+            if(restaurant.getId().equals(restaurantId)){
                 return restaurant;
             }
         }

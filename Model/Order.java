@@ -9,7 +9,6 @@ public class Order {
     private String restaurantId;
     private String foodItemId;
     private String orderStatus;
-    private List<FoodItem> foodItemList = new ArrayList<>();
 
     public Order(String id, String customerId, String restaurantId, String foodItemId, String orderStatus) {
         this.id = id;
@@ -42,7 +41,6 @@ public class Order {
     public void setRestaurantId(String restaurantId) {
         this.restaurantId = restaurantId;
     }
-
     public String getFoodItemId() {
         return foodItemId;
     }
@@ -50,15 +48,6 @@ public class Order {
     public void setFoodItemId(String foodItemId) {
         this.foodItemId = foodItemId;
     }
-
-    public List<FoodItem> getFoodItemList() {
-        return foodItemList;
-    }
-
-    public void setFoodItemList(List<FoodItem> foodItemList) {
-        this.foodItemList = foodItemList;
-    }
-
     public String getOrderStatus() {
         return orderStatus;
     }

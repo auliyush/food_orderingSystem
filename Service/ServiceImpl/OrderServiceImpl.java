@@ -1,5 +1,7 @@
 package Service.ServiceImpl;
 
+import Controller.RestaurantController;
+import Controller.UserController;
 import Model.Order;
 import Repository.RepositoryImpl.OrderRepositoryImpl;
 import Service.OrderService;
@@ -17,30 +19,20 @@ public class OrderServiceImpl implements OrderService {
 
     OrderRepositoryImpl orderRepository = OrderRepositoryImpl.getInstance();
     @Override
-    public boolean orderFood(String orderId, String customerId, String resturantId, String foodItemId) {
-        Order newOrder = new Order(orderId, customerId, resturantId, foodItemId, "Pending");
-        ResturantServiceImpl.getInstance().getResturantByResturantId(resturantId).getOrdersList().add(newOrder);
-        UserServiceImpl.getInstance().getUserByUserName(customerId).getOrdersList().add(newOrder);
+    public boolean orderFood(String orderId, String customerId, String restaurantId, String foodItemId) {
+        Order newOrder = new Order(orderId, customerId, restaurantId, foodItemId, "Pending");
+        RestaurantController.getInstance().getRestaurantByRestaurantId(restaurantId).getOrdersList().add(newOrder);
+        UserController.getInstance().getUserByUserId(customerId).getOrdersList().add(newOrder);
         return orderRepository.addOrder(newOrder);
     }
 
     @Override
-    public Order checkOrderStatusFromCustomerByOrderId(String customerId) {
-       return orderRepository.findOrderByCustomerId(customerId);
+    public List<Order> getOrderListOfCustomerByUserName(String userName) {
+       return UserController.getInstance().getUserByUserName(userName).getOrdersList();
     }
 
     @Override
-    public String checkOrderStatusForRestaurant(String restaurantId) {
-        return orderRepository.findOrderByRestaurantId(restaurantId).getOrderStatus();
-    }
-
-    @Override
-    public List<Order> getOrderListOfCustomer(String userName) {
-       return UserServiceImpl.getInstance().getUserByUserName(userName).getOrdersList();
-    }
-
-    @Override
-    public List<Order> getOrderListOfRestaurant(String restaurantId) {
-        return ResturantServiceImpl.getInstance().getResturantByResturantId(restaurantId).getOrdersList();
+    public List<Order> getOrderListOfRestaurantByRestaurantId(String restaurantId) {
+        return RestaurantController.getInstance().getRestaurantByRestaurantId(restaurantId).getOrdersList();
     }
 }

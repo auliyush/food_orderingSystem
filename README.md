@@ -124,7 +124,7 @@ second project of coding age
 
 3 Service
 
-       A. FoodItemService
+       A. FoodItemService          \
        
             //methods();
 
@@ -146,7 +146,7 @@ second project of coding age
              ---> this method is use for get foodItem from given foodItemId from given restaurantId's restaurant
 
 
-       B. OrderService
+       B. OrderService         \
        
             //methods();
 
@@ -160,7 +160,7 @@ second project of coding age
              ---> this method is use for get list of Restaurant's all Order by Restaurant's Id
 
 
-       C. RestaurantService
+       C. RestaurantService      \
        
             //methods();
 
@@ -187,19 +187,19 @@ second project of coding age
              ---> this method is use for get list of all FoodItem of restaurantId's Restaurant
 
 
-       D. UserService
+       D. UserService      \
        
             //methods();
 
              User getUserByUserName(String userName);
              --->  this method use is for get user by user's name for check existing of User
 
+             User getUserByUserId(String customerId);
+             ---> this method is use for get User by user's Id 
+
              boolean signUp(String toString, String username, String userEmail, String userPassword,
                                String userRole);
              ---> this method is use for create a User and save in User Repository
-
-             User getUserByUserId(String customerId);
-             ---> this method is use for get User by user's Id 
 
              boolean checkEmailAlreadyExistsOrNot(String userEmail);
              ---> this method is use for check Email already exists or not 
@@ -207,11 +207,11 @@ second project of coding age
 
 4 Controller
 
-       A. FoodItemController
+       A. FoodItemController      \
        
             //methods();
 
-             boolean addFoodItem(String foodItemId, String resturantId, String foodName, String foodDescription,
+             boolean addFoodItem(String foodItemId, String restaurantId, String foodName, String foodDescription,
                                  int foodPrice, boolean foodAvailabilty);
              --->  this method is use for add foodItem
 
@@ -228,7 +228,7 @@ second project of coding age
              FoodItem getFoodItemById(String foodItemId, String restaurantId);
              ---> this method is use for get foodItem from given foodItemId from given restaurantId's restaurant
 
-       B. OrderController
+       B. OrderController          \
        
             //methods();
 
@@ -242,7 +242,7 @@ second project of coding age
              ---> this method is use for get list of Restaurant's all Order by Restaurant's Id
 
 
-       C. RestaurantController
+       C. RestaurantController    \
        
             //methods();
 
@@ -259,19 +259,25 @@ second project of coding age
                                      String restaurantAddress, String restaurantPhoneNUmber);
              ---> this method is use for create and save restaurant in repository
 
-             Restaurant findRestaurantByOwnerId(String ownerId);
+             Restaurant getRestaurantByOwnerId(String ownerId);
              ---> this method is use for get restaurant by Owner Id
 
              Restaurant getRestaurantByRestaurantId(String restaurantId);
              ---> this method is use for get restaurant by Restaurant Id
 
+             List<FoodItem> getListOfFoodItem(String restaurantId);
+             ---> this method is use for get list of all FoodItem of restaurantId's Restaurant
 
-       D. UserController
+
+       D. UserController    \
        
             //methods();
 
              User getUserByUserName(String userName);
              --->  this method use is for get user by user's name for check existing of User
+
+             User getUserByUserId(String customerId);
+             ---> this method is use for get User by user's Id 
 
              boolean signUp(String toString, String username, String userEmail, String userPassword,
                                String userRole);

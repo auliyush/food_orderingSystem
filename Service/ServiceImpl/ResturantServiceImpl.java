@@ -1,6 +1,7 @@
 package Service.ServiceImpl;
 
-import Model.Resturant;
+import Model.FoodItem;
+import Model.Restaurant;
 import Repository.RepositoryImpl.ResturantRepositoryImpl;
 import Service.ResturantService;
 
@@ -19,13 +20,13 @@ public class ResturantServiceImpl implements ResturantService {
     ResturantRepositoryImpl resturantRepository = ResturantRepositoryImpl.getInstance();
 
     @Override
-    public List<Resturant> getListOfAllResturant() {
+    public List<Restaurant> getListOfAllResturant() {
       return resturantRepository.getListOfAllResturant();
     }
 
     @Override
-    public boolean fetchResturantByResturantName(String resturantName) {
-        return resturantRepository.fetchResturantByResturantName(resturantName);
+    public boolean findResturantByResturantName(String resturantName) {
+        return resturantRepository.findResturantByResturantName(resturantName);
     }
 
     @Override
@@ -36,18 +37,23 @@ public class ResturantServiceImpl implements ResturantService {
     @Override
     public boolean addResturant(String resturantId, String ownerId, String resturantName,
                                 String resturantAddress, String resturantPhoneNUmber) {
-        Resturant newResturant = new Resturant(resturantId, ownerId, resturantName,
+        Restaurant newRestaurant = new Restaurant(resturantId, ownerId, resturantName,
                 resturantAddress, resturantPhoneNUmber);
-       return resturantRepository.addResturantInList(newResturant);
+       return resturantRepository.addResturantInList(newRestaurant);
     }
 
     @Override
-    public Resturant findByOwnerId(String ownerId) {
-        return resturantRepository.findByOwnerId(ownerId);
+    public Restaurant findRestaurantByOwnerId(String ownerId) {
+        return resturantRepository.findRestaurantByOwnerId(ownerId);
     }
 
     @Override
-    public Resturant getResturantByResturantId(String resturantId) {
-        return resturantRepository.getResturantByResturantId(resturantId);
+    public Restaurant getResturantByResturantId(String resturantId) {
+        return resturantRepository.findResturantByResturantId(resturantId);
+    }
+
+    @Override
+    public List<FoodItem> getListOfFoodItem(String restaurantId) {
+       return resturantRepository.findResturantByResturantId(restaurantId).getFoodItemsList();
     }
 }

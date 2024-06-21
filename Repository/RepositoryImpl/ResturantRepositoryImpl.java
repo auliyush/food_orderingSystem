@@ -1,7 +1,6 @@
 package Repository.RepositoryImpl;
 
-import Model.Resturant;
-import Model.User;
+import Model.Restaurant;
 import Repository.ResturantRepository;
 
 import java.util.ArrayList;
@@ -17,16 +16,16 @@ public class ResturantRepositoryImpl implements ResturantRepository {
         return instance;
     }
 
-    private List<Resturant> resturantList = new ArrayList<>();
+    private List<Restaurant> restaurantList = new ArrayList<>();
     @Override
-    public List<Resturant> getListOfAllResturant() {
-        return resturantList;
+    public List<Restaurant> getListOfAllResturant() {
+        return restaurantList;
     }
 
     @Override
-    public boolean fetchResturantByResturantName(String resturantName) {
-        for(Resturant resturant : resturantList){
-            if(resturant.getResturantName().equals(resturantName)){
+    public boolean findResturantByResturantName(String resturantName) {
+        for(Restaurant restaurant : restaurantList){
+            if(restaurant.getResturantName().equals(resturantName)){
                 return true;
             }
         }
@@ -35,8 +34,8 @@ public class ResturantRepositoryImpl implements ResturantRepository {
 
     @Override
     public boolean checkPhoneNumberAlreadyExistsOrNot(String resturantPhoneNUmber) {
-        for(Resturant resturant : resturantList){
-            if(resturant.getPhoneNumber().equals(resturantPhoneNUmber)){
+        for(Restaurant restaurant : restaurantList){
+            if(restaurant.getPhoneNumber().equals(resturantPhoneNUmber)){
                 return true;
             }
         }
@@ -44,25 +43,25 @@ public class ResturantRepositoryImpl implements ResturantRepository {
     }
 
     @Override
-    public boolean addResturantInList(Resturant newResturant) {
-       return resturantList.add(newResturant);
+    public boolean addResturantInList(Restaurant newRestaurant) {
+       return restaurantList.add(newRestaurant);
     }
 
     @Override
-    public Resturant findByOwnerId(String ownerId) {
-        for(Resturant resturant : resturantList){
-            if(resturant.getOwnerId().equals(ownerId)){
-                return resturant;
+    public Restaurant findRestaurantByOwnerId(String ownerId) {
+        for(Restaurant restaurant : restaurantList){
+            if(restaurant.getOwnerId().equals(ownerId)){
+                return restaurant;
             }
         }
         return null;
     }
 
     @Override
-    public Resturant getResturantByResturantId(String resturantId) {
-        for(Resturant resturant : resturantList){
-            if(resturant.getId().equals(resturantId)){
-                return resturant;
+    public Restaurant findResturantByResturantId(String resturantId) {
+        for(Restaurant restaurant : restaurantList){
+            if(restaurant.getId().equals(resturantId)){
+                return restaurant;
             }
         }
         return null;

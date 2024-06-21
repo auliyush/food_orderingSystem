@@ -1,8 +1,6 @@
 package Service.ServiceImpl;
 
 import Model.Order;
-import Model.Resturant;
-import Model.User;
 import Repository.RepositoryImpl.OrderRepositoryImpl;
 import Service.OrderService;
 
@@ -37,8 +35,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getOrderListOfCustomer(String userId) {
-       return UserServiceImpl.getInstance().getUserByUserName(userId).getOrdersList();
+    public List<Order> getOrderListOfCustomer(String userName) {
+       return UserServiceImpl.getInstance().getUserByUserName(userName).getOrdersList();
     }
 
     @Override

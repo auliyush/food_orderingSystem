@@ -1,19 +1,19 @@
 package Repository;
 
-import Model.Resturant;
+import Model.Restaurant;
 
 import java.util.List;
 
 public interface ResturantRepository {
-    List<Resturant> getListOfAllResturant();
+    List<Restaurant> getListOfAllResturant();
 
-    boolean fetchResturantByResturantName(String resturantName);
+    boolean findResturantByResturantName(String resturantName);
 
     boolean checkPhoneNumberAlreadyExistsOrNot(String resturantPhoneNUmber);
 
-    boolean addResturantInList(Resturant newResturant);
+    boolean addResturantInList(Restaurant newRestaurant);
 
-    Resturant findByOwnerId(String ownerId);
+    Restaurant findRestaurantByOwnerId(String ownerId);
 
-    Resturant getResturantByResturantId(String resturantId);
+    Restaurant findResturantByResturantId(String resturantId);
 }

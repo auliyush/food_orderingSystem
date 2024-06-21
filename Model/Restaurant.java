@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Resturant {
+public class Restaurant {
     private String id;
     private String ownerId;
     private String resturantName;
@@ -12,7 +12,7 @@ public class Resturant {
     private List<FoodItem> foodItemsList = new ArrayList<>();
     private List<Order> ordersList = new ArrayList<>();
 
-    public Resturant(String id, String ownerId, String resturantName, String address, String phoneNumber) {
+    public Restaurant(String id, String ownerId, String resturantName, String address, String phoneNumber) {
         this.id = id;
         this.ownerId = ownerId;
         this.resturantName = resturantName;

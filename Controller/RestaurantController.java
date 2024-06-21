@@ -1,15 +1,15 @@
 package Controller;
 
-import Model.Resturant;
+import Model.Restaurant;
 import Service.ServiceImpl.ResturantServiceImpl;
 
 import java.util.List;
 
-public class ResutarantController {
-    private static ResutarantController instance;
-    public static synchronized ResutarantController getInstance(){
+public class RestaurantController {
+    private static RestaurantController instance;
+    public static synchronized RestaurantController getInstance(){
         if(instance == null){
-            instance = new ResutarantController();
+            instance = new RestaurantController();
         }
         return instance;
     }
@@ -18,12 +18,12 @@ public class ResutarantController {
 
 
 
-    public List<Resturant> getListOfAllResturant() {
+    public List<Restaurant> getListOfAllResturant() {
         return resturantService.getListOfAllResturant();
     }
 
-    public boolean fetchResturantByResturantName(String resturantName) {
-        return resturantService.fetchResturantByResturantName(resturantName);
+    public boolean findResturantByResturantName(String resturantName) {
+        return resturantService.findResturantByResturantName(resturantName);
     }
 
     public boolean checkPhoneNumberAlreadyExistsOrNot(String resturantPhoneNUmber) {
@@ -35,7 +35,11 @@ public class ResutarantController {
         return resturantService.addResturant(resturantId, ownerId, resturantName, resturantAddress, resturantPhoneNUmber);
     }
 
-    public Resturant findByOwnerId(String ownerId) {
-       return resturantService.findByOwnerId(ownerId);
+    public Restaurant findRestaurantByOwnerId(String ownerId) {
+       return resturantService.findRestaurantByOwnerId(ownerId);
+    }
+
+    public Restaurant findRestaurantByRestaurantId(String restaurantId){
+        return resturantService.getResturantByResturantId(restaurantId);
     }
 }

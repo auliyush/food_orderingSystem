@@ -1,19 +1,22 @@
 package Service;
 
-import Model.Resturant;
+import Model.FoodItem;
+import Model.Restaurant;
 
 import java.util.List;
 
 public interface ResturantService {
-    List<Resturant> getListOfAllResturant();
+    List<Restaurant> getListOfAllResturant();
 
-    boolean fetchResturantByResturantName(String resturantName);
+    boolean findResturantByResturantName(String resturantName);
 
     boolean checkPhoneNumberAlreadyExistsOrNot(String resturantPhoneNUmber);
 
     boolean addResturant(String resturantId, String ownerId, String resturantName, String resturantAddress, String resturantPhoneNUmber);
 
-    Resturant findByOwnerId(String ownerId);
+    Restaurant findRestaurantByOwnerId(String ownerId);
 
-    Resturant getResturantByResturantId(String resturantId);
+    Restaurant getResturantByResturantId(String resturantId);
+
+    List<FoodItem> getListOfFoodItem(String restaurantId);
 }

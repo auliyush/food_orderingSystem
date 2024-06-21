@@ -1,8 +1,6 @@
 package Controller;
 
 import Model.Order;
-import Model.Resturant;
-import Model.User;
 import Service.ServiceImpl.OrderServiceImpl;
 
 import java.util.List;
@@ -30,8 +28,8 @@ public class OrderController {
         return orderService.checkOrderStatusForRestaurant(restaurantId);
     }
 
-    public List<Order> getOrderListOfCustomer(String userId) {
-        return orderService.getOrderListOfCustomer(userId);
+    public List<Order> getOrderListOfCustomer(String userName) {
+        return orderService.getOrderListOfCustomer(userName);
     }
 
     public List<Order> getOrderListOfRestaurant(String restaurantId) {

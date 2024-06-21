@@ -124,7 +124,7 @@ second project of coding age
 
 3 Service
 
-       A. FoodItemService          \
+       A. FoodItemService          
        
             //methods();
 
@@ -146,7 +146,7 @@ second project of coding age
              ---> this method is use for get foodItem from given foodItemId from given restaurantId's restaurant
 
 
-       B. OrderService         \
+       B. OrderService         
        
             //methods();
 
@@ -160,7 +160,7 @@ second project of coding age
              ---> this method is use for get list of Restaurant's all Order by Restaurant's Id
 
 
-       C. RestaurantService      \
+       C. RestaurantService      
        
             //methods();
 
@@ -187,7 +187,7 @@ second project of coding age
              ---> this method is use for get list of all FoodItem of restaurantId's Restaurant
 
 
-       D. UserService      \
+       D. UserService      
        
             //methods();
 
@@ -207,7 +207,7 @@ second project of coding age
 
 4 Controller
 
-       A. FoodItemController      \
+       A. FoodItemController      
        
             //methods();
 
@@ -228,7 +228,7 @@ second project of coding age
              FoodItem getFoodItemById(String foodItemId, String restaurantId);
              ---> this method is use for get foodItem from given foodItemId from given restaurantId's restaurant
 
-       B. OrderController          \
+       B. OrderController          
        
             //methods();
 
@@ -242,7 +242,7 @@ second project of coding age
              ---> this method is use for get list of Restaurant's all Order by Restaurant's Id
 
 
-       C. RestaurantController    \
+       C. RestaurantController    
        
             //methods();
 
@@ -269,7 +269,7 @@ second project of coding age
              ---> this method is use for get list of all FoodItem of restaurantId's Restaurant
 
 
-       D. UserController    \
+       D. UserController    
        
             //methods();
 

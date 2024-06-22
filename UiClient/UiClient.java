@@ -40,6 +40,7 @@ public class UiClient {
     }
 
     //   populate Customer
+
     {
         userController.signUp(Integer.toString(users++), "@manjit", "@manjit12", "manjit@gmail.com",
                 "customer");
@@ -280,6 +281,7 @@ public class UiClient {
 
 
     }  // this method for customer Home Page TODO complete this
+
     public void showRestaurants(User user) {
         List<Restaurant> restaurantList = restaurantController.getListOfAllRestaurant();
         if (restaurantList.isEmpty()) {
@@ -311,6 +313,7 @@ public class UiClient {
         System.out.println("Invalid option");
 
     }       // this method for show restaurant lists
+
     public void orderStatusForUser(User user) {
         List<Order> listOfCustomerOrders = orderController.getOrderListOfCustomerByUserName(user.getUserName());
         if (listOfCustomerOrders.isEmpty()) {
@@ -359,12 +362,12 @@ public class UiClient {
 
             System.out.print("Enter your option: \n");
             int option = 0;
-                try {
-                    option = sc.nextInt();
-                } catch (InputMismatchException e) {
-                    System.out.print("please choose valid option");
-                    sc.nextLine();
-                }
+            try {
+                option = sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.print("please choose valid option");
+                sc.nextLine();
+            }
             switch (option) {
                 case 1:
                     showMenuForCustomer(restaurant);
@@ -393,7 +396,7 @@ public class UiClient {
         for (FoodItem foodItem : foodItemList) {
             System.out.println("\n* " + foodItem.getFoodName());
             System.out.println("* " + foodItem.getFoodDescription());
-            System.out.println("* " + foodItem.getFoodPrice()+ "/-");
+            System.out.println("* " + foodItem.getFoodPrice() + "/-");
             if (foodItem.getFoodAvailability()) {
                 System.out.println("* Available");
             } else {
@@ -411,8 +414,8 @@ public class UiClient {
         int flagMark = 1;
         for (FoodItem foodItem : restaurantFoodItemLIst) {
             System.out.println("\n" + flagMark);
-            System.out.println("* "+foodItem.getFoodName());
-            System.out.println("* "+foodItem.getFoodDescription());
+            System.out.println("* " + foodItem.getFoodName());
+            System.out.println("* " + foodItem.getFoodDescription());
             System.out.println("* " + foodItem.getFoodPrice() + "/-");
             if (foodItem.getFoodAvailability()) {
                 System.out.println("* Available");
@@ -450,7 +453,6 @@ public class UiClient {
     } //for Order food from restaurant
 
 
-
     //    FOR Restaurant Owners
     public void ownersHomePage(User user) {
         do {
@@ -463,14 +465,14 @@ public class UiClient {
             System.out.println("3.sign out\n");
             System.out.println("Enter Your Option : ");
             int chhosedOption = 0;
-                try {
-                    chhosedOption = sc.nextInt();
-                } catch (InputMismatchException inputMismatchException) {
-                    System.out.println("Please Choose Valid option");
-                    chhosedOption = 0;
-                    sc.nextLine();
-                    continue;
-                }
+            try {
+                chhosedOption = sc.nextInt();
+            } catch (InputMismatchException inputMismatchException) {
+                System.out.println("Please Choose Valid option");
+                chhosedOption = 0;
+                sc.nextLine();
+                continue;
+            }
 
             sc.nextLine();                           // To remove new Line character from input stream.
 
@@ -542,6 +544,7 @@ public class UiClient {
                 restaurantName, restaurantAddress, restaurantPhoneNUmber);
         System.out.println("\n" + restaurantName + " Successfully Added in Zayka");
     }  // this method For add resturant in system
+
     public void openRestaurant(User user) {
         Restaurant restaurant = restaurantController.getRestaurantByOwnerId(user.getId());
         if (restaurant == null) {
@@ -614,11 +617,11 @@ public class UiClient {
         } while (true);
     }
 
-    public void showRestaurantDetails(Restaurant restaurant){
-        System.out.println("\nName :"+restaurant.getResturantName());
-        System.out.println("Phone :"+restaurant.getPhoneNumber());
-        System.out.println("Address :"+restaurant.getAddress());
-        System.out.println("Owner username : "+userController.getUserByUserId(restaurant.getOwnerId()).getUserName());
+    public void showRestaurantDetails(Restaurant restaurant) {
+        System.out.println("\nName :" + restaurant.getResturantName());
+        System.out.println("Phone :" + restaurant.getPhoneNumber());
+        System.out.println("Address :" + restaurant.getAddress());
+        System.out.println("Owner username : " + userController.getUserByUserId(restaurant.getOwnerId()).getUserName());
     }
 
     public void updateRestaurantDetails(Restaurant restaurant) {
@@ -629,7 +632,7 @@ public class UiClient {
         }
         restaurantName = helperForValidatingObj.trimmedMethod(restaurantName);
         while (restaurantController.findRestaurantByRestaurantName(restaurantName)) {
-            if(Objects.equals(restaurantName, restaurant.getResturantName())){
+            if (Objects.equals(restaurantName, restaurant.getResturantName())) {
                 break;
             }
             System.out.println("this name's Resturant already exists try another Name");
@@ -651,7 +654,7 @@ public class UiClient {
                 System.out.println("Please Enter Valid Phone Number");
             }
             if (returnValue) {
-                if(Objects.equals(restaurantPhoneNUmber, restaurant.getPhoneNumber())){
+                if (Objects.equals(restaurantPhoneNUmber, restaurant.getPhoneNumber())) {
                     break;
                 }
                 System.out.println("Number already registered");
@@ -682,7 +685,7 @@ public class UiClient {
         if (Objects.equals(foodName, "q")) {
             return;
         }
-        while(!helperForValidatingObj.validateFoodName(foodName)){
+        while (!helperForValidatingObj.validateFoodName(foodName)) {
             System.out.println("Please Enter Food name");
             foodName = sc.nextLine();
             foodName = helperForValidatingObj.trimmedMethod(foodName);
@@ -693,7 +696,7 @@ public class UiClient {
         if (Objects.equals(foodDescription, "q")) {
             return;
         }
-        while(!helperForValidatingObj.validateFoodName(foodDescription)){
+        while (!helperForValidatingObj.validateFoodName(foodDescription)) {
             System.out.println("Please Enter Food Description");
             foodDescription = sc.nextLine();
             foodDescription = helperForValidatingObj.trimmedMethod(foodDescription);
@@ -725,7 +728,7 @@ public class UiClient {
             System.out.println(i);
             System.out.println("Name : " + foodItem.getFoodName());
             System.out.println("Description : " + foodItem.getFoodDescription());
-            System.out.println("Price : " + foodItem.getFoodPrice()+ "/-");
+            System.out.println("Price : " + foodItem.getFoodPrice() + "/-");
             System.out.println("Availability : " + foodItem.getFoodAvailability());
             i++;
         }
@@ -768,7 +771,7 @@ public class UiClient {
                 if (Objects.equals(foodavailability, "q")) {
                     return;
                 }
-                while (true){
+                while (true) {
                     if (foodavailability.equals("y") || foodavailability.equals("Y") ||
                             foodavailability.equals("N") || foodavailability.equals("n")) {
                         break;
@@ -790,7 +793,7 @@ public class UiClient {
 
     public void deleteFoodItem(Restaurant restaurant) {
         List<FoodItem> restaurantFoodItemLIst = foodItemController.getFoodItemListByRestaurantId(restaurant.getId());
-        if(restaurantFoodItemLIst.isEmpty()){
+        if (restaurantFoodItemLIst.isEmpty()) {
             System.out.println("\nNo one foodItem In your Menu");
             return;
         }
@@ -799,7 +802,7 @@ public class UiClient {
             System.out.println(i + ".");
             System.out.println(foodItem.getFoodName());
             System.out.println(foodItem.getFoodDescription());
-            System.out.println(foodItem.getFoodPrice()+ "/-");
+            System.out.println(foodItem.getFoodPrice() + "/-");
             System.out.println(foodItem.getFoodAvailability());
             i++;
         }
@@ -852,7 +855,7 @@ public class UiClient {
             System.out.println(foodItemController.getFoodItemById(order.getFoodItemId(),
                     order.getRestaurantId()).getFoodDescription());
             System.out.println(foodItemController.getFoodItemById(order.getFoodItemId(),
-                    order.getRestaurantId()).getFoodPrice()+" /-");
+                    order.getRestaurantId()).getFoodPrice() + " /-");
         }
 
     }
@@ -876,10 +879,11 @@ public class UiClient {
                         order.getRestaurantId()).getFoodName() + " is Delivered\n");
             }
         }
-        System.out.println("If Pending Order is Now Delieverd, Then Enter orderId for Change order Status " +
+        System.out.println("If Pending Order is Now Delivered, Then Enter orderId for Change order Status " +
                 "else tap Enter button");
         int flagMark = 0;
         while (flagMark == 0) {
+
             String orderId = sc.nextLine();
             if (Objects.equals(orderId, "\n") || Objects.equals(orderId, "q") ||
                     Objects.equals(orderId, "")) {
@@ -898,12 +902,11 @@ public class UiClient {
                             }
                             status = helperForValidatingObj.trimmedMethod(status);
                             while (true) {
-                                if (Objects.equals(status, "D") || Objects.equals(status, "d") ||
-                                        Objects.equals(status, "p") || Objects.equals(status, "P")) {
-                                    if (status.equals("D") || status.equals("d")) {
+                                if (Objects.equals(status, "D")||Objects.equals(status, "P")) {
+                                    if (status.equals("D")) {
                                         order.setOrderStatus("Delivered");
                                         break;
-                                    } else {
+                                    } else if(status.equals("P")){
                                         order.setOrderStatus("Process");
                                         break;
                                     }
@@ -920,8 +923,9 @@ public class UiClient {
                             if (Objects.equals(status, "\n")) {
                                 return;
                             }
+                            status = helperForValidatingObj.trimmedMethod(status);
                             while (true) {
-                                if (Objects.equals(status, "D") || Objects.equals(status, "d")) {
+                                if (Objects.equals(status, "D")) {
                                     order.setOrderStatus("Delivered");
                                     break;
                                 } else {
@@ -932,10 +936,11 @@ public class UiClient {
                             }
                         }
                         flagMark = 1;
+                        break;
                     }
                 }
                 if (flagMark == 0) {
-                    System.out.println("Please Enter Valid OrderId");
+                    System.out.println("Invalid OrderId");
                 } else {
                     System.out.println("Status updated\n");
                     System.out.println("Enter 'Y' for More else tap Enter Button");

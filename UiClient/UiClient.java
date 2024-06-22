@@ -247,7 +247,6 @@ public class UiClient {
             System.out.println("* Customer Home Page *");
             System.out.println("------------------------------\n");
 
-            System.out.println("If you want to return to previous menu ....please enter 'q' ");
             System.out.println("Options:");
             System.out.println("1.Show Restaurant Lists");
             System.out.println("2.My Orders");
@@ -469,7 +468,6 @@ public class UiClient {
                 chhosedOption = sc.nextInt();
             } catch (InputMismatchException inputMismatchException) {
                 System.out.println("Please Choose Valid option");
-                chhosedOption = 0;
                 sc.nextLine();
                 continue;
             }
@@ -576,7 +574,6 @@ public class UiClient {
                 chhosedOption = sc.nextInt();
             } catch (InputMismatchException inputMismatchException) {
                 System.out.println("Invaild option");
-                chhosedOption = 0;
                 sc.nextLine();
                 continue;
             }
@@ -885,8 +882,7 @@ public class UiClient {
         while (flagMark == 0) {
 
             String orderId = sc.nextLine();
-            if (Objects.equals(orderId, "\n") || Objects.equals(orderId, "q") ||
-                    Objects.equals(orderId, "")) {
+            if (Objects.equals(orderId, "") || Objects.equals(orderId, "q")) {
                 return;
             } else {
                 for (Order order : getOrderList) {
@@ -897,12 +893,12 @@ public class UiClient {
                             System.out.println("this Order is in Pending, is delivered or in process or not\n" +
                                     "type 'D' if Delivered or 'P' if in Process, else tap enter button");
                             String status = sc.nextLine();
-                            if (Objects.equals(status, "\n")) {
+                            if (Objects.equals(status, "")|| Objects.equals(status, "q")) {
                                 return;
                             }
                             status = helperForValidatingObj.trimmedMethod(status);
                             while (true) {
-                                if (Objects.equals(status, "D")||Objects.equals(status, "P")) {
+                                if (Objects.equals(status, "D")||Objects.equals(status, "P")  ) {
                                     if (status.equals("D")) {
                                         order.setOrderStatus("Delivered");
                                         break;
@@ -914,13 +910,17 @@ public class UiClient {
                                     System.out.println("please Enter valid option");
                                     status = sc.nextLine();
                                     status = helperForValidatingObj.trimmedMethod(status);
+                                    if (Objects.equals(status, "")|| Objects.equals(status, "q")) {
+                                        return;
+                                    }
+
                                 }
                             }
                         } else {
                             System.out.println("this Order is in Process, is delivered or not\ntype 'D' if Delivered," +
                                     " else tap enter button");
                             String status = sc.nextLine();
-                            if (Objects.equals(status, "\n")) {
+                            if (Objects.equals(orderId, "q") || Objects.equals(orderId, "") || Objects.equals(status, "\n")) {
                                 return;
                             }
                             status = helperForValidatingObj.trimmedMethod(status);

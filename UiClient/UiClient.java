@@ -288,7 +288,7 @@ public class UiClient {
         }
         int flagMark = 1;
         for (Restaurant restaurant : restaurantList) {
-            System.out.println(flagMark++ + " : " + restaurant.getResturantName());
+            System.out.println(flagMark++ + " : " + restaurant.getRestaurantName());
         }
 
         int chooseOption = 0;
@@ -324,7 +324,7 @@ public class UiClient {
                     } else if (j == 0 || j == 49) {
                         System.out.print("|");
                     } else if (i == 2 && j == 15) {
-                        System.out.print(restaurant.getResturantName());
+                        System.out.print(restaurant.getRestaurantName());
                     } else {
                         System.out.print(" ");
                     }
@@ -370,7 +370,9 @@ public class UiClient {
         List<Order> listOfCustomerOrders = orderController.getOrderListOfCustomerByUserName(user.getUserName());
         if (listOfCustomerOrders.isEmpty()) {
             System.out.println("\nNo orders, Go and Order some Food");
+            return;
         }
+        int totalBill = 0;
         for (Order order : listOfCustomerOrders) {
             System.out.println("Your Order Id : " + order.getId());
             if (order.getOrderStatus().equals("Pending")) {
@@ -383,7 +385,12 @@ public class UiClient {
                 System.out.println("Your Order : " + foodItemController.getFoodItemById(order.getFoodItemId(),
                         order.getRestaurantId()).getFoodName() + " is Delivered\n");
             }
+            if(!Objects.equals(order.getOrderStatus(), "Delivered")){
+                totalBill = totalBill + foodItemController.getFoodItemById(
+                        order.getFoodItemId(),order.getRestaurantId()).getFoodPrice();
+            }
         }
+        System.out.println("Your Total Bill is : "+totalBill);
     }    // this method show order Status for Customer
 
     public void showMenuForCustomer(Restaurant restaurant) {
@@ -422,7 +429,7 @@ public class UiClient {
             }
             flagMark++;
         }
-        System.out.println("Enter your Order : \n");
+        System.out.println("Enter your Order : ");
         int chooseFoodItem = 0;
         while (chooseFoodItem == 0) {
             try {
@@ -494,7 +501,7 @@ public class UiClient {
     public void createRestaurant(User user) {
         Restaurant restaurantObj = restaurantController.getRestaurantByOwnerId(user.getId());
         if (restaurantObj != null) {
-            System.out.println("You have already created one restaurant " + restaurantObj.getResturantName());
+            System.out.println("You have already created one restaurant " + restaurantObj.getRestaurantName());
             return;
         }
         System.out.println("Enter Restaurant Name");
@@ -554,7 +561,7 @@ public class UiClient {
     public void ownerRestaurantPage(Restaurant restaurant) {
         do {
             System.out.println("\n--------------------------------------");
-            System.out.println("      *  " + restaurant.getResturantName() + "  *");
+            System.out.println("      *  " + restaurant.getRestaurantName() + "  *");
             System.out.println("--------------------------------------\n");
             System.out.println("Options:");
             System.out.println("1.Show restaurant details");
@@ -614,7 +621,7 @@ public class UiClient {
     }
 
     public void showRestaurantDetails(Restaurant restaurant) {
-        System.out.println("\nName :" + restaurant.getResturantName());
+        System.out.println("\nName :" + restaurant.getRestaurantName());
         System.out.println("Phone :" + restaurant.getPhoneNumber());
         System.out.println("Address :" + restaurant.getAddress());
         System.out.println("Owner username : " + userController.getUserByUserId(restaurant.getOwnerId()).getUserName());
@@ -628,7 +635,7 @@ public class UiClient {
         }
         restaurantName = helperForValidatingObj.trimmedMethod(restaurantName);
         while (restaurantController.findRestaurantByRestaurantName(restaurantName)) {
-            if (Objects.equals(restaurantName, restaurant.getResturantName())) {
+            if (Objects.equals(restaurantName, restaurant.getRestaurantName())) {
                 break;
             }
             System.out.println("this name's Restaurant already exists try another Name");
@@ -667,7 +674,7 @@ public class UiClient {
         if (Objects.equals(restaurantAddress, "q")) {
             return;
         }
-        restaurant.setResturantName(restaurantName);
+        restaurant.setRestaurantName(restaurantName);
         restaurant.setPhoneNumber(restaurantPhoneNUmber);
         restaurant.setAddress(restaurantAddress);
         System.out.println("Update Successfully");
@@ -800,6 +807,7 @@ public class UiClient {
             System.out.println(foodItem.getFoodDescription());
             System.out.println(foodItem.getFoodPrice() + "/-");
             System.out.println(foodItem.getFoodAvailability());
+            System.out.println();
             i++;
         }
         System.out.println("Which Food Item you Want to Delete");
@@ -827,7 +835,7 @@ public class UiClient {
     }   //this method for delete FoodItem
 
     public void showMenuForRestaurant(Restaurant restaurant) {
-        List<FoodItem> foodItemList = RestaurantController.getInstance().getListOfFoodItem(restaurant.getId());
+        List<FoodItem> foodItemList = restaurantController.getListOfFoodItem(restaurant.getId());
         if (foodItemList.isEmpty()) {
             System.out.println("\nNo foodItem In your Menu");
             return;
@@ -851,7 +859,7 @@ public class UiClient {
             System.out.println(foodItemController.getFoodItemById(order.getFoodItemId(),
                     order.getRestaurantId()).getFoodDescription());
             System.out.println(foodItemController.getFoodItemById(order.getFoodItemId(),
-                    order.getRestaurantId()).getFoodPrice() + " /-");
+                    order.getRestaurantId()).getFoodPrice() + " /-\n");
         }
 
     }

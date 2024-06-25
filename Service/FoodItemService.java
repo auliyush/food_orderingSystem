@@ -14,4 +14,8 @@ public interface FoodItemService {
     boolean deleteFoodItem(String foodItemId, String restaurantId);
 
     FoodItem getFoodItemById(String foodItemId, String restaurantId);
+
+    boolean saveDeletedFoodItemInGlobalList(FoodItem foodItem, String restaurantId);
+
+    List<FoodItem> getDeletedFoodItem();
 }

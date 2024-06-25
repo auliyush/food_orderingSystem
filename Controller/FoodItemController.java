@@ -38,4 +38,12 @@ public class FoodItemController {
     public FoodItem getFoodItemById(String foodItemId, String restaurantId) {
         return foodItemService.getFoodItemById(foodItemId, restaurantId);
     }
+
+    public boolean saveDeletedFoodItemInGlobalList(FoodItem foodItem, String restaurantId) {
+        return foodItemService.saveDeletedFoodItemInGlobalList(foodItem,restaurantId);
+    }
+
+    public List<FoodItem> getDeletedFoodItem() {
+        return foodItemService.getDeletedFoodItem();
+    }
 }

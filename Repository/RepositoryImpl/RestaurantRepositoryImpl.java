@@ -25,7 +25,7 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
     @Override
     public boolean findRestaurantByRestaurantName(String resturantName) {
         for(Restaurant restaurant : restaurantList){
-            if(restaurant.getResturantName().equals(resturantName)){
+            if(restaurant.getRestaurantName().equals(resturantName)){
                 return true;
             }
         }

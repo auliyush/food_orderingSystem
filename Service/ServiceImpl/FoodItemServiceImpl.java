@@ -1,7 +1,9 @@
 package Service.ServiceImpl;
 
+import Controller.FoodItemController;
 import Controller.RestaurantController;
 import Model.FoodItem;
+import Repository.RepositoryImpl.FoodItemRepositoryImpl;
 import Service.FoodItemService;
 
 import java.util.List;
@@ -51,6 +53,7 @@ public class FoodItemServiceImpl implements FoodItemService {
                 getFoodItemsList();
         for(FoodItem foodItem : fetchFoodItemList){
             if(foodItem.getId().equals(foodItemId)){
+                FoodItemController.getInstance().saveDeletedFoodItemInGlobalList(foodItem,restaurantId);
                 fetchFoodItemList.remove(foodItem);
                 return true;
             }
@@ -60,12 +63,29 @@ public class FoodItemServiceImpl implements FoodItemService {
 
     @Override
     public FoodItem getFoodItemById(String foodItemId, String restaurantId) {
-        for(FoodItem foodItem : RestaurantController.getInstance().getRestaurantByRestaurantId(restaurantId).
-                getFoodItemsList()){
+        List<FoodItem> foodItemList = RestaurantController.getInstance().getRestaurantByRestaurantId(restaurantId).
+                getFoodItemsList();
+        for(FoodItem foodItem : foodItemList){
+            if(foodItem.getId().equals(foodItemId)){
+                return foodItem;
+            }
+        }
+        foodItemList = FoodItemController.getInstance().getDeletedFoodItem();
+        for(FoodItem foodItem : foodItemList){
             if(foodItem.getId().equals(foodItemId)){
                 return foodItem;
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean saveDeletedFoodItemInGlobalList(FoodItem foodItem, String restaurantId) {
+        return FoodItemRepositoryImpl.getInstance().addDeletedFoodItem(foodItem);
+    }
+
+    @Override
+    public List<FoodItem> getDeletedFoodItem() {
+        return FoodItemRepositoryImpl.getInstance().getDeletedFoodItem();
     }
 }

@@ -6,16 +6,16 @@ import java.util.List;
 public class Restaurant {
     private String id;
     private String ownerId;
-    private String resturantName;
+    private String restaurantName;
     private String address;
     private String phoneNumber;
     private List<FoodItem> foodItemsList = new ArrayList<>();
     private List<Order> ordersList = new ArrayList<>();
 
-    public Restaurant(String id, String ownerId, String resturantName, String address, String phoneNumber) {
+    public Restaurant(String id, String ownerId, String restaurantName, String address, String phoneNumber) {
         this.id = id;
         this.ownerId = ownerId;
-        this.resturantName = resturantName;
+        this.restaurantName = restaurantName;
         this.address = address;
         this.phoneNumber = phoneNumber;
     }
@@ -36,12 +36,12 @@ public class Restaurant {
         this.ownerId = ownerId;
     }
 
-    public String getResturantName() {
-        return resturantName;
+    public String getRestaurantName() {
+        return restaurantName;
     }
 
-    public void setResturantName(String resturantName) {
-        this.resturantName = resturantName;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 
     public String getAddress() {

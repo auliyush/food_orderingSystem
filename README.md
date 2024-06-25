@@ -68,7 +68,19 @@ second project of coding age
 
 2 Repository
 
-       A. OrderRepository
+       A. FoodItemRepository
+       
+            //methods();
+
+             boolean addDeletedFoodItem(FoodItem foodItem);
+             --->  this method is use for add those foodItem in FoodItemRepository which
+                    is deleted by restaurant in their list
+
+             List<FoodItem> getDeletedFoodItem();
+             ---> this method is use for get list of deleted food Item 
+
+
+       B. OrderRepository
        
             //methods();
 
@@ -82,7 +94,7 @@ second project of coding age
              ---> this method is use for find Order by using Restaurant Id
 
 
-       B. RestaurantRepository
+       C. RestaurantRepository
        
             //methods();
 
@@ -105,7 +117,7 @@ second project of coding age
              ---> this method is use for get list of all restaurant.
 
 
-       C. UserRepository
+       D. UserRepository
        
             //methods();
 
@@ -144,6 +156,13 @@ second project of coding age
 
              FoodItem getFoodItemById(String foodItemId, String restaurantId);
              ---> this method is use for get foodItem from given foodItemId from given restaurantId's restaurant
+
+             boolean addDeletedFoodItem(FoodItem foodItem);
+             --->  this method is use for add those foodItem in FoodItemRepository which
+                    is deleted by restaurant in their list
+
+             List<FoodItem> getDeletedFoodItem();
+             ---> this method is use for get list of deleted food Item 
 
 
        B. OrderService         
@@ -227,6 +246,13 @@ second project of coding age
 
              FoodItem getFoodItemById(String foodItemId, String restaurantId);
              ---> this method is use for get foodItem from given foodItemId from given restaurantId's restaurant
+
+             boolean addDeletedFoodItem(FoodItem foodItem);
+             --->  this method is use for add those foodItem in FoodItemRepository which
+                    is deleted by restaurant in their list
+
+             List<FoodItem> getDeletedFoodItem();
+             ---> this method is use for get list of deleted food Item 
 
        B. OrderController          
        
